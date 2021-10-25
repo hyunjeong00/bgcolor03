@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bgcolor</title>
+
+    <style>
+      body{
+        background-color: rgb(255, 208, 249);
+        transition: all 0.9s;
+        position: relative;
+        left: 50px;
+        height: 2000px;
+      }
+
+      .bgcolor--blue{
+        background-color: #fffbc8;
+      }
+      .bgcolor--gray {
+        background-color: lightgray;
+      }
+  
+      .btns {
+        position: relative;
+        top: 0px;
+        width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+
+      button{
+        width: 165px;
+        height: 50px;
+        background-color: rgb(90, 90, 90);
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 14px;
+        font-family: 'Noto Sans';
+        line-height: 20px;
+        margin-top: 20px;
+      }
+  
+      .bg__img{
+        margin: 0;
+        position: absolute;
+        bottom: 485px;
+        width: 100vw;
+        height: 100vh;
+        background: url('./main.jpg');
+        transition: 2s;
+        opacity: 0;
+        right: 25px;
+      }
+  
+      .bg__img--show{
+        opacity: 1;
+      }
+
+      .btns{
+        position: fixed;
+        padding: 10px;
+        background-color: transparent;
+        transition: 0.3s;
+        width: 100%;
+        right: 0px;
+        height: 10%;
+      }
+
+      .btns.bgshow{background-color: rgb(216, 138, 138);}
+
+      #go-top {
+      display: none;
+      position: fixed;
+      right: 30px;
+      bottom: 50px;
+      outline: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      z-index: 9999;
+      color: rgb(216, 138, 138);
+    }
+
+    section{
+      width: 100%;
+      text-align: center;
+    }
+
+    .wrapper{
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    #home, #about, #skills #works #contact_me{
+      padding-top: 88px;
+      text-align: center;
+    }
+
+    h1{
+      color: #d39b85;
+      font-size: 48px;
+    }
+
+    h2{
+      font-size: 32px;
+    }
+
+    h3{
+      font-size: 24px;
+      font-weight: 300;
+    }
+
+
+  </style>
+  </head>
+
+  <body>
+  <div class="bg__img"></div>
+  <div class="btns">
+    <button class="btn_toggle">배경색상변경 toggle</button>
+    <button class="btn--reset">배경색상 reset</button>
+    <button class="btn--bggray">배경색상변경 Gray</button>
+    <button class="btn--bgimg">배경이미지 background</button>
+    
+  </div>
+
+  <section id="home">
+    <div class="wrapper">
+      <h1>Home</h1>
+      <h2>What is Lorem Ipsum</h2>
+      <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrapper">
+      <h1>About</h1>
+      <h2>Where does it come from</h2>
+      <h3>Contrary to popular belief, Lorem Ipsum is not simply random text.</h3>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrapper">
+      <h1>skills</h1>
+      <h2>Why do we use it</h2>
+      <h3>It is a long established fact that a reader will be distracted by the readable.</h3>
+    </div>
+  </section>
+
+  <section id="works">
+    <div class="wrapper">
+      <h1>works</h1>
+      <h2>Where can I get some</h2>
+      <h3>There are many variations of passages of Lorem Ipsum available,<br>
+          but the majority have suffered alteration in some form,</h3>
+    </div>
+  </section>
+
+  <section id="contact_me">
+    <div class="wrapper">
+      <h1>contact</h1>
+      <h2>Why do we use it</h2>
+      <h3>It is a long established fact that a reader will be distracted by the readable.</h3>
+    </div>
+  </section>
+
+
+  <button id="go-top"><svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+    class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd"
+      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+  </svg>
+  </button>
+
+
+  <script>
+    const btnToggle = document.querySelector('.btn_toggle');
+    // addEventListener('이벤트', 실행함수);
+    btnToggle.addEventListener('click', function () {
+      document.body.classList.toggle('bgcolor--blue');
+      document.body.classList.toggle('bgcolor--blue', 'bgcolor--gray');
+      bgContainer.classList.remove('bg__img--show');
+      home.scrollIntoView({behavior:"smooth"});
+      // console.log('버튼클릭');
+    });
+
+    const btnReset = document.querySelector('.btn--reset');
+    btnReset.addEventListener('click', function () {
+      bgContainer.classList.remove('bg__img--show');
+      document.body.classList.remove('bgcolor--blue', 'bgcolor--gray','bg--img');
+    });
+
+    const btnBgGray = document.querySelector('.btn--bggray');
+    const skills = document.querySelector('#skills');
+    btnBgGray.addEventListener('click', function () {
+      // document.body.classList.remove('bg--img');
+      bgContainer.classList.remove('bg__img--show');
+      document.body.classList.add('bgcolor--gray');
+      skills.scrollIntoView({behavior:"smooth", block:"center"});
+    });
+
+    const bgContainer = document.querySelector('.bg__img');
+    const btnBgImg = document.querySelector('.btn--bgimg');
+    btnBgImg.addEventListener('click', function () {
+      //document.body.classList.add('bg--img');
+      bgContainer.classList.add('bg__img--show');
+    });
+
+
+    const navContainer = document.querySelector('.btns')
+      document.addEventListener('scroll', function () {
+        // console.log(window.scrollY);
+        if (window.scrollY > 100) {
+          navContainer.classList.add('bgshow');
+        } else {
+          navContainer.classList.remove('bgshow');
+        }
+
+      })
+
+      var backToTop = () => {
+      // Scroll | button show/hide
+      window.addEventListener('scroll', () => {
+      if (document.querySelector('html').scrollTop > 100) {
+      document.getElementById('go-top').style.display = "block";} 
+      else {
+      document.getElementById('go-top').style.display = "none";}
+    });
+
+     // back to top
+     document.getElementById('go-top').addEventListener('click', () => {
+     window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+
+    })
+  };
+  backToTop();
+
+  </script>
+  
+
+</body>
+</html>
